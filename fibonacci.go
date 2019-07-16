@@ -14,6 +14,10 @@ var Fib = map[uint]uint{
 func main() {
 	input := flag.Int("input", 0, "Input integer to find Fibonacci number.")
 	flag.Parse()
+	if *input == 0 {
+		fmt.Printf("Input: ")
+		fmt.Scanf("%d", input)
+	}
 	fmt.Printf("Fibonacci: %d\n", FibonacciFinder(uint(*input)))
 }
 
