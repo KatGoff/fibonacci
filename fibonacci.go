@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 )
 
@@ -11,10 +12,9 @@ var Fib = map[uint]uint{
 }
 
 func main() {
-	var input uint
-	fmt.Printf("Input: ")
-	fmt.Scanf("%d", &input)
-	fmt.Printf("Fibonacci: %d\n", FibonacciFinder(input))
+	input := flag.Int("input", 0, "Input integer to find Fibonacci number.")
+	flag.Parse()
+	fmt.Printf("Fibonacci: %d\n", FibonacciFinder(uint(*input)))
 }
 
 // FibonacciFinder finds Fib(n)
