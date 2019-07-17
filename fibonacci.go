@@ -23,7 +23,24 @@ func main() {
 			os.Exit(1)
 		}
 	}
-	fmt.Printf("Fibonacci: %d\n", FibonacciFinder(uint(*input)))
+
+	// Print result to output.txt
+	result := fmt.Sprintf("Input: %d | Fibonacci: %d\n", *input, FibonacciFinder(uint(*input)))
+	output, err := os.OpenFile("output.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		os.Exit(1)
+	}
+	if _, err = output.WriteString(result); err != nil {
+		fmt.Printf("Error: %v\n", err)
+		os.Exit(1)
+	}
+	if err := output.Close(); err != nil {
+		fmt.Printf("Error: %v\n", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf(result)
 }
 
 // FibonacciFinder finds Fib(n)
