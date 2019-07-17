@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 )
 
 // Fib allows the stored map keys and values to be accessed in FibonacciFinder
@@ -16,7 +17,11 @@ func main() {
 	flag.Parse()
 	if *input == 0 {
 		fmt.Printf("Input: ")
-		fmt.Scanf("%d", input)
+		_, err := fmt.Scanf("%d", input)
+		if err != nil {
+			fmt.Printf("Error: %v\n", err)
+			os.Exit(1)
+		}
 	}
 	fmt.Printf("Fibonacci: %d\n", FibonacciFinder(uint(*input)))
 }
