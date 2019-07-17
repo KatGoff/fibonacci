@@ -15,7 +15,7 @@ var Fib = map[uint]uint{
 func main() {
 	input := flag.Int("input", 0, "Input integer to find Fibonacci number.")
 	flag.Parse()
-	if *input == 0 {
+	if flagSet("input") == false {
 		fmt.Printf("Input: ")
 		_, err := fmt.Scanf("%d", input)
 		if err != nil {
@@ -32,4 +32,17 @@ func FibonacciFinder(n uint) uint {
 		Fib[n] = FibonacciFinder(n-1) + FibonacciFinder(n-2)
 	}
 	return Fib[n]
+}
+
+// flagSet checks that a flag has been provided
+func flagSet(name string) bool {
+	var flagFound bool
+
+	flag.Visit(func(flag *flag.Flag) {
+		if flag.Name == name {
+			flagFound = true
+		}
+	})
+
+	return flagFound
 }
