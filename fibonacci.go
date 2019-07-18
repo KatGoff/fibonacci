@@ -40,10 +40,9 @@ func main() {
 }
 
 // errorHandler prints the message to the terminal and exits the program
-func errorHandler(err error) bool {
+func errorHandler(err error) {
 	fmt.Printf("Error: %v\n", err)
 	os.Exit(1)
-	return true
 }
 
 // FibonacciFinder finds Fib(n)
