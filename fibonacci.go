@@ -19,7 +19,7 @@ func main() {
 		fmt.Printf("Input: ")
 		_, err := fmt.Scanf("%d", input)
 		if err != nil {
-			Error(err)
+			errorHandler(err)
 		}
 	}
 
@@ -27,20 +27,20 @@ func main() {
 	result := fmt.Sprintf("Input: %d | Fibonacci: %d\n", *input, FibonacciFinder(uint(*input)))
 	output, err := os.OpenFile("output.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		Error(err)
+		errorHandler(err)
 	}
 	if _, err = output.WriteString(result); err != nil {
-		Error(err)
+		errorHandler(err)
 	}
 	if err := output.Close(); err != nil {
-		Error(err)
+		errorHandler(err)
 	}
 
 	fmt.Printf(result)
 }
 
-// Error prints the message to the terminal and exits the program
-func Error(err error) bool {
+// errorHandler prints the message to the terminal and exits the program
+func errorHandler(err error) bool {
 	fmt.Printf("Error: %v\n", err)
 	os.Exit(1)
 	return true
