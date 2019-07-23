@@ -36,9 +36,11 @@ func FibonacciFinder(n uint) uint {
 	return Fib[n]
 }
 
+// rename function e.g. readIntegersFromInputFile(fileName string)
 func inputFile() []int {
 	var inputArray []int
 
+	// can we change this so that you pass in the file as a parameter and if there isn't one, you prompt?
 	// input input.txt
 	fileByte, err := ioutil.ReadFile("input.txt")
 	if err != nil {
@@ -103,6 +105,18 @@ func outputResult(inputArray []int) {
 		result := fmt.Sprintf("Input: %d | Fibonacci: %d\n", num, FibonacciFinder(uint(num)))
 		fmt.Printf(outputFile(result))
 	}
+}
+
+func calculateFibonacci(numbers ...int) map[int]int {
+	// calculate the numbers and then return the map
+}
+// if output file is specified as a parameter:
+func printResultsToFile(numToFibMap map[int]int) error {
+	...
+}
+// in all cases:
+func printResultsToScreen(numToFibMap map[int]int) {
+	...
 }
 
 // errorHandler prints the message to the terminal and exits the program
