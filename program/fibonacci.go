@@ -26,16 +26,16 @@ func main() {
 
 	if flagSet("inputFile") == true {
 		inputArray = InputFromFile(*inputFile)
-		calculateFibonacci(inputArray)
-		Output(Results, *outputFile)
+		calculateFibonacci(inputArray, *outputFile)
+		//Output(Results, *outputFile)
 	} else if flagSet("inputNum") == true {
 		inputArray = []int{InputFromParameter(*inputNum)}
-		calculateFibonacci(inputArray)
-		Output(Results, *outputFile)
+		calculateFibonacci(inputArray, *outputFile)
+		//Output(Results, *outputFile)
 	} else {
 		inputArray = []int{InputFromPrompt()}
-		calculateFibonacci(inputArray)
-		Output(Results, *outputFile)
+		calculateFibonacci(inputArray, *outputFile)
+		//Output(Results, *outputFile)
 	}
 }
 
@@ -60,9 +60,12 @@ func flagSet(name string) bool {
 	return flagFound
 }
 
-func calculateFibonacci(inputArray []int) {
+// I might need to send the output straight to func Output to keep it in order
+func calculateFibonacci(inputArray []int, outputFile string) {
 	for _, num := range inputArray {
 		Results[uint(num)] = FibFinder(uint(num))
+		// Need to send the key value pair from the map to Output
+		Output(uint(num), FibFinder(uint(num)), outputFile)
 	}
 }
 
