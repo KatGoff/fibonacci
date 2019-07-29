@@ -1,6 +1,0 @@
-Input: 5 | Fibonacci: 5
-Input: 7 | Fibonacci: 13
-Input: 32 | Fibonacci: 2178309
-Input: 0 | Fibonacci: 0
-Input: 1 | Fibonacci: 1
-Input: 6 | Fibonacci: 8
