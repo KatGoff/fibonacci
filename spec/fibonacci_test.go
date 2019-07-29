@@ -4,9 +4,9 @@ import (
 	"testing"
 )
 
-func TestFibonacciFinder(t *testing.T) {
+func TestFibFinder(t *testing.T) {
 	for _, c := range testCases {
-		n := FibonacciFinder(c.input)
+		n := FibFinder(c.input)
 		if n != c.expected {
 			t.Fatalf("FAIL: %s\nCase %q, expected %v, got %v", c.description, c.input, c.expected, n)
 		}
