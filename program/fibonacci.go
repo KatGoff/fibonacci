@@ -26,14 +26,12 @@ func main() {
 
 	if flagSet("inputFile") == true {
 		inputArray = InputFromFile(*inputFile)
-		calculateFibonacci(inputArray, *outputFile)
 	} else if flagSet("inputNum") == true {
 		inputArray = []int{InputFromParameter(*inputNum)}
-		calculateFibonacci(inputArray, *outputFile)
 	} else {
 		inputArray = []int{InputFromPrompt()}
-		calculateFibonacci(inputArray, *outputFile)
 	}
+	returnFibonacci(inputArray, *outputFile)
 }
 
 // FibFinder finds Fib(n)
@@ -57,7 +55,7 @@ func flagSet(name string) bool {
 	return flagFound
 }
 
-func calculateFibonacci(inputArray []int, outputFile string) {
+func returnFibonacci(inputArray []int, outputFile string) {
 	for _, num := range inputArray {
 		Results[uint(num)] = FibFinder(uint(num))
 		Output(uint(num), FibFinder(uint(num)), outputFile)
